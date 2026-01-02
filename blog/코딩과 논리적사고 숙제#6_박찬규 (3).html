@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>경희대 주변 시험기간 카공 카페 추천</title>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #e67e22;
+            --border: #ddd;
+            --bg: #f5f6fa;
+            --card-bg: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                         "Noto Sans KR", "Malgun Gothic", sans-serif;
+            background: var(--bg);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* 상단 메뉴바 */
+        .nav-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #ffffff;
+            border-bottom: 1px solid #e1e4ea;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            padding: 10px 16px;
+        }
+
+        .nav-bar a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 14px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .nav-bar a:hover {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        .page-wrap {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px 16px 40px;
+        }
+
+        #title {
+            color: var(--primary);
+            font-size: 28px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 15px;
+            color: #555;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* 섹션 공통 + 애니메이션 */
+        .section {
+            margin-top: 24px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease-out forwards;
+        }
+
+        /* 순서별로 살짝 시간차 애니메이션 */
+        .section:nth-of-type(1) { animation-delay: 0.0s; }
+        .section:nth-of-type(2) { animation-delay: 0.1s; }
+        .section:nth-of-type(3) { animation-delay: 0.2s; }
+        .section:nth-of-type(4) { animation-delay: 0.3s; }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section h2 {
+            color: #34495e;
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+            font-size: 20px;
+            margin-bottom: 14px;
+        }
+
+        /* 카드형 카페 레이아웃 */
+        .cafe-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .cafe-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px 16px;
+            flex: 1 1 280px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+        }
+
+        .cafe-name {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        .cafe-meta {
+            font-size: 13px;
+            color: #777;
+            margin-bottom: 6px;
+        }
+
+        .cafe-card ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin: 6px 0 8px;
+            font-size: 14px;
+        }
+
+        .cafe-card ul li {
+            margin-bottom: 2px;
+        }
+
+        /* 이미지 영역: 가로 배치 */
+        .cafe-images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        img.cafe-img {
+            width: 50%;          /* 기존 25%에서 2배로 확대 */
+            height: auto;
+            border-radius: 10px;
+            display: block;
+        }
+
+        /* 회기역 섹션의 단일 이미지는 더 크게 (기존보다 2배 → 100%) */
+        img.cafe-img-large {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .btn-row {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .btn-map {
+            display: inline-block;
+            font-size: 13px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            text-decoration: none;
+            border: 1px solid #ccc;
+            background: #ffffff;
+            color: var(--primary);
+        }
+
+        .btn-map:hover {
+            background: #ecf3ff;
+            border-color: #b3c5e6;
+        }
+
+        @media (max-width: 600px) {
+            #title { font-size: 22px; }
+            img.cafe-img { width: 100%; }  /* 모바일에서는 한 장씩 크게 */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 상단 메뉴바 -->
+    <nav class="nav-bar">
+        <a href="#front-gate">정문 근처 카페</a>
+        <a href="#back-gate">후문 근처 카페</a>
+        <a href="#hoegi">회기역 근처 카페</a>
+    </nav>
+
+    <div class="page-wrap">
+
+        <!-- 제목 섹션 -->
+        <header class="section">
+            <h1 id="title">시험기간 공부하기 좋은<br>경희대학교 주변 카페 추천</h1>
+            <p class="subtitle">
+                경희대 4학년이 직접 선정한 <span class="highlight">카공 성지 6곳</span><br>
+                정문 · 후문 · 회기역 기준으로 정리해봤어요.
+            </p>
+        </header>
+
+        <!-- 1. 정문 근처 -->
+        <section class="section" id="front-gate">
+            <h2>1. 정문 근처 추천 카페</h2>
+
+            <div class="cafe-list">
+
+                <!-- 브루앤바이트 -->
+                <div class="cafe-card">
+                    <div class="cafe-name">📍 브루앤바이트</div>
+                    <div class="cafe-meta">정문 도보 3분</div>
+                    <ul>
+                        <li>넓은 책상 + 1인석, 단체석(팀플도 여유롭게 가능)</li>
+                        <li>콘센트 많음 → 장시간 공부에 최적</li>
+                        <li>메뉴 다양해서 시험기간 내내 질리지 않음</li>
+                        <li>추천: 핑크소금 커피, 젤라또</li>
+                    </ul>
+
+                    <div class="cafe-images">
+                        <img class="cafe-img" src="https://ldb-phinf.pstatic.net/20250717_270/1752730481922lTEIy_PNG/Image_2025-07-17_13_58_34.png" alt="브루앤바이트 메뉴판 1">
+                        <img class="cafe-img" src="https://ldb-phinf.pstatic.net/20250717_51/17527304738728fWtf_PNG/Image_2025-07-17_13_58_18.png" alt="브루앤바이트 메뉴판 2">
+                    </div>
+
+                    <div class="btn-row">
+                        <a class="btn-map" href="https://map.naver.com/p/search/브루앤바이트%20경희대" target="_blank">네이버 지도에서 위치 보기</a>
+                    </div>
+                </div>
+
+                <!-- 투썸플레이스 경희대점 -->
+                <div class="cafe-card">
+                    <div class="cafe-name">📍 투썸플레이스 경희대점</div>
+                    <div class="cafe-meta">정문 도보 2분 · 새벽 2시까지</div>
+                    <ul>
+                        <li>콘센트 풍부해서 노트북 공부하기 좋음</li>
+                        <li>적당한 백색소음으로 집중 + 편안함 공존</li>
+                        <li>새벽까지 열려서 벼락치기 할 때 필수 스팟</li>
+                        <li>추천: 아이스크림 카페라떼, 떠먹는 스트로베리 초콜릿 생크림</li>
+                    </ul>
+
+                    <div class="cafe-images">
+                        <img class="cafe-img" src="https://ldb-phinf.pstatic.net/20170614_284/1497422994392LUmmG_JPEG/18-1.jpg" alt="투썸플레이스 메뉴판 1">
+                        <img class="cafe-img" src="https://ldb-phinf.pstatic.net/20170614_27/1497422994531DvuE9_JPEG/18-2.jpg" alt="투썸플레이스 메뉴판 2">
+                        <img class="cafe-img" src="https://ldb-phinf.pstatic.net/20170614_279/1497422994695Rg5Wb_JPEG/18-3.jpg" alt="투썸플레이스 메뉴판 3">
+                    </div>
+
+                    <div class="btn-row">
+                        <a class="btn-map" href="https://map.naver.com/p/search/투썸플레이스%20경희대점" target="_blank">네이버 지도에서 위치 보기</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 2. 후문 근처 -->
+        <section class="section" id="back-gate">
+            <h2>2. 후문 근처 추천 카페</h2>
+
+            <div class="cafe-list">
+
+                <!-- 컴플리트커피 -->
+                <div class="cafe-card">
+                    <div class="cafe-name">📍 컴플리트커피</div>
+                    <div class="cafe-meta">후문 도보 3분</div>
+                    <ul>
+                        <li>밝고 조용한 분위기 → 집중 잘 됨</li>
+                        <li>커피 퀄리티가 높아서 커알못도 빠지는 맛</li>
+                        <li>디저트도 수준급 (브라우니, 티라미수 등)</li>
+                        <li>추천: 바닐라라떼, 바나나 푸딩</li>
+                    </ul>
+
+                    <div class="cafe-images">
+                        <img class="cafe-img" src="https://ldb-phinf.pstatic.net/20250821_299/1755768145010omzuR_JPEG/image.jpg" alt="컴플리트커피 메뉴판 1">
+                        <img class="cafe-img" src="https://ldb-phinf.pstatic.net/20250821_96/175576813683428upU_JPEG/image.jpg" alt="컴플리트커피 메뉴판 2">
+                    </div>
+
+                    <div class="btn-row">
+                        <a class="btn-map" href="https://map.naver.com/p/search/컴플리트커피%20외대" target="_blank">네이버 지도에서 위치 보기</a>
+                    </div>
+                </div>
+
+                <!-- 어빌리티커피 외대점 -->
+                <div class="cafe-card">
+                    <div class="cafe-name">📍 어빌리티커피 외대점</div>
+                    <div class="cafe-meta">후문 근처 · 새벽 3시까지</div>
+                    <ul>
+                        <li>노트북 작업·과제하기 좋은 좌석 구성</li>
+                        <li>조용하고 편안한 분위기</li>
+                        <li>항상 사람이 많아서 자리 경쟁은 감수해야 함</li>
+                        <li>추천: 어빌리티커피, 바스크 치즈케이크</li>
+                    </ul>
+
+                    <div class="cafe-images">
+                        <img class="cafe-img" src="https://ldb-phinf.pstatic.net/20250503_270/17462716992664EuRF_JPEG/1000012884.jpg" alt="어빌리티커피 메뉴판 1">
+                        <img class="cafe-img" src="https://ldb-phinf.pstatic.net/20250503_107/1746271691791h6UOG_JPEG/1000012883.jpg" alt="어빌리티커피 메뉴판 2">
+                    </div>
+
+                    <div class="btn-row">
+                        <a class="btn-map" href="https://map.naver.com/p/search/어빌리티커피%20외대점" target="_blank">네이버 지도에서 위치 보기</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. 회기역 근처 -->
+        <section class="section" id="hoegi">
+            <h2>3. 회기역 근처 추천 카페</h2>
+
+            <div class="cafe-list">
+
+                <!-- 레프트커피 경희대점 -->
+                <div class="cafe-card">
+                    <div class="cafe-name">📍 레프트커피 경희대점</div>
+                    <div class="cafe-meta">회기역 도보 5~7분</div>
+                    <ul>
+                        <li>화이트·우드톤 감성 인테리어</li>
+                        <li>좌석 간 간격이 넓어 여유로운 분위기</li>
+                        <li>창가석에서 회기역 방향 뷰 보면서 공부 가능</li>
+                        <li>추천: 플랫화이트, 시그니처 라떼</li>
+                    </ul>
+
+                    <div class="cafe-images">
+                        <img class="cafe-img-large" src="https://ldb-phinf.pstatic.net/20230815_55/1692089059545FiMDR_JPEG/156D9740-1EEC-43B0-889A-2CCC75C819FE.jpeg" alt="레프트커피 경희대점">
+                    </div>
+
+                    <div class="btn-row">
+                        <a class="btn-map" href="https://map.naver.com/p/search/레프트커피%20경희대점" target="_blank">네이버 지도에서 위치 보기</a>
+                    </div>
+                </div>
+
+                <!-- READSTREET COFFEE -->
+                <div class="cafe-card">
+                    <div class="cafe-name">📍 READSTREET COFFEE</div>
+                    <div class="cafe-meta">회기역 인근 조용한 골목</div>
+                    <ul>
+                        <li>독서·노트북 작업하기 좋은 차분한 공간</li>
+                        <li>좌석 간 간격이 넓어 옆 사람 신경 덜 쓰임</li>
+                        <li>핸드드립 커피가 특히 유명</li>
+                        <li>추천: RSC 피넛크림라떼, 콜드브루</li>
+                    </ul>
+
+                    <div class="cafe-images">
+                        <img class="cafe-img-large" src="https://ldb-phinf.pstatic.net/20250522_258/174788998821418b3b_JPEG/1000015886.jpg" alt="READSTREET COFFEE">
+                    </div>
+
+                    <div class="btn-row">
+                        <a class="btn-map" href="https://map.naver.com/p/search/READSTREET%20COFFEE" target="_blank">네이버 지도에서 위치 보기</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
