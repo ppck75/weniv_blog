@@ -187,10 +187,14 @@ AI의 도움을 통해 웹 페이지 개발도 충분히 가능하다는 것이�
 *텍스트로 작성하기 위해 스타일 부분은 주석처리 하였습니다.*
 
 
-<title>경희대 주변 시험기간 카공 카페 추천</title>
+<!-- <title>경희대 주변 시험기간 카공 카페 추천</title> -->
 
-<!--style-->
-
+<!-- =========================
+     디자인(CSS) 코드: 비적용 처리
+     아래 <style> 전체를 HTML 주석으로 감쌌습니다.
+     ========================= -->
+<!--
+<style>
     :root {
         --primary: #2c3e50;
         --accent: #e67e22;
@@ -384,12 +388,14 @@ AI의 도움을 통해 웹 페이지 개발도 충분히 가능하다는 것이�
         img.cafe-img { width: 100%; }  /* 모바일에서는 한 장씩 크게 */
     }
 </style>
+-->
+
 <!-- 상단 메뉴바 -->
-<!--nav class="nav-bar"-->
+<nav class="nav-bar">
     <a href="#front-gate">정문 근처 카페</a>
     <a href="#back-gate">후문 근처 카페</a>
     <a href="#hoegi">회기역 근처 카페</a>
-</!--nav-->
+</nav>
 
 <div class="page-wrap">
 
@@ -466,92 +472,3 @@ AI의 도움을 통해 웹 페이지 개발도 충분히 가능하다는 것이�
                 <div class="cafe-meta">후문 도보 3분</div>
                 <ul>
                     <li>밝고 조용한 분위기 → 집중 잘 됨</li>
-                    <li>커피 퀄리티가 높아서 커알못도 빠지는 맛</li>
-                    <li>디저트도 수준급 (브라우니, 티라미수 등)</li>
-                    <li>추천: 바닐라라떼, 바나나 푸딩</li>
-                </ul>
-
-                <div class="cafe-images">
-                    <img class="cafe-img" src="https://ldb-phinf.pstatic.net/20250821_299/1755768145010omzuR_JPEG/image.jpg" alt="컴플리트커피 메뉴판 1">
-                    <img class="cafe-img" src="https://ldb-phinf.pstatic.net/20250821_96/175576813683428upU_JPEG/image.jpg" alt="컴플리트커피 메뉴판 2">
-                </div>
-
-                <div class="btn-row">
-                    <a class="btn-map" href="https://map.naver.com/p/search/컴플리트커피%20외대" target="_blank">네이버 지도에서 위치 보기</a>
-                </div>
-            </div>
-
-            <!-- 어빌리티커피 외대점 -->
-            <div class="cafe-card">
-                <div class="cafe-name">📍 어빌리티커피 외대점</div>
-                <div class="cafe-meta">후문 근처 · 새벽 3시까지</div>
-                <ul>
-                    <li>노트북 작업·과제하기 좋은 좌석 구성</li>
-                    <li>조용하고 편안한 분위기</li>
-                    <li>항상 사람이 많아서 자리 경쟁은 감수해야 함</li>
-                    <li>추천: 어빌리티커피, 바스크 치즈케이크</li>
-                </ul>
-
-                <div class="cafe-images">
-                    <img class="cafe-img" src="https://ldb-phinf.pstatic.net/20250503_270/17462716992664EuRF_JPEG/1000012884.jpg" alt="어빌리티커피 메뉴판 1">
-                    <img class="cafe-img" src="https://ldb-phinf.pstatic.net/20250503_107/1746271691791h6UOG_JPEG/1000012883.jpg" alt="어빌리티커피 메뉴판 2">
-                </div>
-
-                <div class="btn-row">
-                    <a class="btn-map" href="https://map.naver.com/p/search/어빌리티커피%20외대점" target="_blank">네이버 지도에서 위치 보기</a>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- 3. 회기역 근처 -->
-    <section class="section" id="hoegi">
-        <h2>3. 회기역 근처 추천 카페</h2>
-
-        <div class="cafe-list">
-
-            <!-- 레프트커피 경희대점 -->
-            <div class="cafe-card">
-                <div class="cafe-name">📍 레프트커피 경희대점</div>
-                <div class="cafe-meta">회기역 도보 5~7분</div>
-                <ul>
-                    <li>화이트·우드톤 감성 인테리어</li>
-                    <li>좌석 간 간격이 넓어 여유로운 분위기</li>
-                    <li>창가석에서 회기역 방향 뷰 보면서 공부 가능</li>
-                    <li>추천: 플랫화이트, 시그니처 라떼</li>
-                </ul>
-
-                <div class="cafe-images">
-                    <img class="cafe-img-large" src="https://ldb-phinf.pstatic.net/20230815_55/1692089059545FiMDR_JPEG/156D9740-1EEC-43B0-889A-2CCC75C819FE.jpeg" alt="레프트커피 경희대점">
-                </div>
-
-                <div class="btn-row">
-                    <a class="btn-map" href="https://map.naver.com/p/search/레프트커피%20경희대점" target="_blank">네이버 지도에서 위치 보기</a>
-                </div>
-            </div>
-
-            <!-- READSTREET COFFEE -->
-            <div class="cafe-card">
-                <div class="cafe-name">📍 READSTREET COFFEE</div>
-                <div class="cafe-meta">회기역 인근 조용한 골목</div>
-                <ul>
-                    <li>독서·노트북 작업하기 좋은 차분한 공간</li>
-                    <li>좌석 간 간격이 넓어 옆 사람 신경 덜 쓰임</li>
-                    <li>핸드드립 커피가 특히 유명</li>
-                    <li>추천: RSC 피넛크림라떼, 콜드브루</li>
-                </ul>
-
-                <div class="cafe-images">
-                    <img class="cafe-img-large" src="https://ldb-phinf.pstatic.net/20250522_258/174788998821418b3b_JPEG/1000015886.jpg" alt="READSTREET COFFEE">
-                </div>
-
-                <div class="btn-row">
-                    <a class="btn-map" href="https://map.naver.com/p/search/READSTREET%20COFFEE" target="_blank">네이버 지도에서 위치 보기</a>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-</div>
