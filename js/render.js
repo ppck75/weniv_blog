@@ -290,6 +290,7 @@ function renderBlogList(searchResult = null, currentPage = 1) {
                 ? styleMarkdown("post", text, postInfo)
                 : styleJupyter("post", text, postInfo)
             )
+            .then(() => typesetMath())
             .then(() => {
               // 렌더링 후에는 URL 변경(query string으로 블로그 포스트 이름 추가)
               const url = new URL(origin);
@@ -347,6 +348,7 @@ function renderBlogList(searchResult = null, currentPage = 1) {
                   ? styleMarkdown("post", text, postInfo)
                   : styleJupyter("post", text, postInfo)
               )
+              .then(() => typesetMath())
               .then(() => {
                 // 렌더링 후에는 URL 변경(query string으로 블로그 포스트 이름 추가)
                 const url = new URL(origin);
@@ -656,6 +658,7 @@ async function initialize() {
         fetch(origin + "menu/" + url.search.split("=")[1])
           .then((response) => response.text())
           .then((text) => styleMarkdown("menu", text))
+          .then(() => typesetMath())
           .then(() => {
             // 렌더링 후에는 URL 변경(query string으로 블로그 포스트 이름 추가)
             const url = new URL(window.location.href);
