@@ -154,6 +154,9 @@ But, prediction and flexibility in machine learning versus inference and interpr
 
 ## 5. 머신러닝 프로세스
 
+![머신러닝1_1](img)
+
+
 머신러닝 프로젝트는 다음과 같은 단계로 진행된다.
 
 ### 1) 데이터 준비 (Data Preparation)
